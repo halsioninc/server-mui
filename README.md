@@ -98,9 +98,9 @@ import { ThemeProvider } from 'server-mui';
 + import { Box } from 'server-mui';
 + import Stack from 'server-mui/lib/Stack'
 ```
-- Note: Currently only Box is exported, (Stack, Grid, and Container will soon be added, similar to PigmentCss). You can use the regular Mui Components for the others since they are mostly interactive (eg. Button and Accordion require client side API's). You can also fashion your own with the styled function below.
+- Note: Currently only Box, Stack, Grid, and Container are exported (similar to PigmentCSS). You can use the regular Mui Components for the others since they are mostly interactive (eg. Button and Accordion require client side API's). You can also fashion your own with the styled function below.
 
-4. **Replace Styled Function**  
+1. **Replace Styled Function**  
 ```diff
 - import { styled } from '@mui/material/styles';
 + import { styled } from 'server-mui/lib/styles';

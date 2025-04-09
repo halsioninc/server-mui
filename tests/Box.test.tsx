@@ -1,9 +1,9 @@
-import { describe, test, expect, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { describe, test, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
 import { Box } from "../src/Box";
 import React from "react";
 import { EMOTION_CACHE_KEY, registerTheme, ThemeProvider } from "../src";
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { setClient, setServer } from "./test-utils";
 
 describe("Box", () => {

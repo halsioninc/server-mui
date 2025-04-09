@@ -1,12 +1,6 @@
 import * as React from "react";
 import { styled as muiStyled, Theme } from "@mui/material/styles";
-import {
-  isClient,
-  isTest,
-  Options,
-  processSx,
-  useTheme,
-} from "../system";
+import { isClient, isTest, Options, processSx, useTheme } from "../system";
 import clsx from "clsx";
 
 type StyleOptions<Props extends {}> = {

@@ -2,7 +2,7 @@ import { describe, test, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider, Box } from "../../src";
 import React from "react";
-import { createTheme } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { setClient, setServer } from "../test-utils";
 
 describe("ServerThemeProvider", () => {
