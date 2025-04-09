@@ -21,6 +21,5 @@ jobs:
         id: publish
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          dry-run: true
       - if: ${{ steps.publish.outputs.type }}
         run: echo "Version changed!"
