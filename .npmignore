@@ -1,0 +1,8 @@
+node_modules/
+src/
+examples/
+tests/
+.github/
+tsconfig.json
+rollup.config.js
+vitest.config.ts
