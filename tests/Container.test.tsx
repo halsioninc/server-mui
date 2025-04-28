@@ -13,7 +13,7 @@ describe("Container", () => {
     const { container } = render(
       <ThemeProvider theme={createTheme({})}>
         <Container data-testid="basic-container">Content</Container>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     const containerElement = screen.getByTestId("basic-container");
@@ -27,7 +27,7 @@ describe("Container", () => {
       width: "100%",
       marginLeft: "auto",
       marginRight: "auto",
-      boxSizing: "border-box"
+      boxSizing: "border-box",
     });
   });
 
@@ -36,20 +36,22 @@ describe("Container", () => {
 
     render(
       <ThemeProvider theme={createTheme({})}>
-        <Container disableGutters={false} data-testid="with-gutters">Content</Container>
-      </ThemeProvider>
+        <Container disableGutters={false} data-testid="with-gutters">
+          Content
+        </Container>
+      </ThemeProvider>,
     );
 
     // Extract all style tags to check for padding styles
     const styles = [...document.querySelectorAll("style")].map(
-      (v) => v.textContent
+      (v) => v.textContent,
     );
 
     // Check for padding variables in the base styles
     const hasPaddingVars = styles.some(
       (style) =>
         style?.includes("padding-left:var(--Container-paddingX)") &&
-        style?.includes("padding-right:var(--Container-paddingX)")
+        style?.includes("padding-right:var(--Container-paddingX)"),
     );
     expect(hasPaddingVars).toBeTruthy();
 
@@ -57,7 +59,7 @@ describe("Container", () => {
     const xsPaddingStylePresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:0px)") &&
-        style?.includes("--Container-paddingX:16px")
+        style?.includes("--Container-paddingX:16px"),
     );
     expect(xsPaddingStylePresent).toBeTruthy();
 
@@ -65,7 +67,7 @@ describe("Container", () => {
     const smPaddingStylePresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:600px)") &&
-        style?.includes("--Container-paddingX:24px")
+        style?.includes("--Container-paddingX:24px"),
     );
     expect(smPaddingStylePresent).toBeTruthy();
   });
@@ -75,26 +77,28 @@ describe("Container", () => {
 
     render(
       <ThemeProvider theme={createTheme({})}>
-        <Container disableGutters={true} data-testid="no-gutters">Content</Container>
-      </ThemeProvider>
+        <Container disableGutters={true} data-testid="no-gutters">
+          Content
+        </Container>
+      </ThemeProvider>,
     );
-    
+
     // Extract all style tags
     const styles = [...document.querySelectorAll("style")].map(
-      (v) => v.textContent
+      (v) => v.textContent,
     );
 
     // Check for zero padding using CSS variables
-    const zeroPaddingPresent = styles.some(
-      (style) => style?.includes("--Container-paddingX:0")
+    const zeroPaddingPresent = styles.some((style) =>
+      style?.includes("--Container-paddingX:0"),
     );
     expect(zeroPaddingPresent).toBeTruthy();
-    
+
     // Make sure there are no non-zero padding values for this container
     const noNormalPaddingForThisContainer = !styles.some(
       (style) =>
         style?.includes("--Container-paddingX:16px") &&
-        style?.includes(screen.getByTestId("no-gutters").className)
+        style?.includes(screen.getByTestId("no-gutters").className),
     );
     expect(noNormalPaddingForThisContainer).toBeTruthy();
   });
@@ -104,20 +108,22 @@ describe("Container", () => {
 
     render(
       <ThemeProvider theme={createTheme({})}>
-        <Container fixed data-testid="fixed-container">Content</Container>
-      </ThemeProvider>
+        <Container fixed data-testid="fixed-container">
+          Content
+        </Container>
+      </ThemeProvider>,
     );
 
     // Extract all style tags to check for fixed width styles
     const styles = [...document.querySelectorAll("style")].map(
-      (v) => v.textContent
+      (v) => v.textContent,
     );
 
     // Check for sm breakpoint fixed width
     const smFixedWidthPresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:600px)") &&
-        style?.includes("max-width:600px")
+        style?.includes("max-width:600px"),
     );
     expect(smFixedWidthPresent).toBeTruthy();
 
@@ -125,7 +131,7 @@ describe("Container", () => {
     const mdFixedWidthPresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:900px)") &&
-        style?.includes("max-width:900px")
+        style?.includes("max-width:900px"),
     );
     expect(mdFixedWidthPresent).toBeTruthy();
 
@@ -133,7 +139,7 @@ describe("Container", () => {
     const lgFixedWidthPresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:1200px)") &&
-        style?.includes("max-width:1200px")
+        style?.includes("max-width:1200px"),
     );
     expect(lgFixedWidthPresent).toBeTruthy();
 
@@ -141,7 +147,7 @@ describe("Container", () => {
     const xlFixedWidthPresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:1536px)") &&
-        style?.includes("max-width:1536px")
+        style?.includes("max-width:1536px"),
     );
     expect(xlFixedWidthPresent).toBeTruthy();
   });
@@ -151,20 +157,22 @@ describe("Container", () => {
 
     render(
       <ThemeProvider theme={createTheme({})}>
-        <Container maxWidth="md" data-testid="md-container">Content</Container>
-      </ThemeProvider>
+        <Container maxWidth="md" data-testid="md-container">
+          Content
+        </Container>
+      </ThemeProvider>,
     );
 
     // Extract all style tags to check for maxWidth styles
     const styles = [...document.querySelectorAll("style")].map(
-      (v) => v.textContent
+      (v) => v.textContent,
     );
 
     // Check for md breakpoint max-width
     const mdMaxWidthPresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:900px)") &&
-        style?.includes("max-width:900px")
+        style?.includes("max-width:900px"),
     );
     expect(mdMaxWidthPresent).toBeTruthy();
   });
@@ -174,20 +182,22 @@ describe("Container", () => {
 
     render(
       <ThemeProvider theme={createTheme({})}>
-        <Container maxWidth="xs" data-testid="xs-container">Content</Container>
-      </ThemeProvider>
+        <Container maxWidth="xs" data-testid="xs-container">
+          Content
+        </Container>
+      </ThemeProvider>,
     );
 
     // Extract all style tags to check for xs maxWidth styles
     const styles = [...document.querySelectorAll("style")].map(
-      (v) => v.textContent
+      (v) => v.textContent,
     );
 
     // Check for xs special handling (should be at least 444px)
     const xsMaxWidthPresent = styles.some(
       (style) =>
         style?.includes("@media (min-width:0px)") &&
-        style?.includes("max-width:444px")
+        style?.includes("max-width:444px"),
     );
     expect(xsMaxWidthPresent).toBeTruthy();
   });
@@ -197,13 +207,13 @@ describe("Container", () => {
 
     render(
       <ThemeProvider theme={createTheme({})}>
-        <Container 
+        <Container
           sx={{ backgroundColor: "primary.main", mt: 2 }}
           data-testid="sx-container"
         >
           Content
         </Container>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     const containerElement = screen.getByTestId("sx-container");
@@ -221,10 +231,12 @@ describe("Container", () => {
     render(
       <ThemeProvider theme={createTheme({})}>
         <Container data-testid="client-container">Content</Container>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     // On the client side, MUI Container should be used which applies MuiContainer-root class
-    expect(screen.getByTestId("client-container")).toHaveClass("MuiContainer-root");
+    expect(screen.getByTestId("client-container")).toHaveClass(
+      "MuiContainer-root",
+    );
   });
 });

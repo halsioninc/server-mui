@@ -69,8 +69,8 @@ describe("Stack", () => {
 
     const { container } = render(
       <ThemeProvider theme={createTheme({})}>
-        <Stack 
-          divider={<div data-testid="divider" />} 
+        <Stack
+          divider={<div data-testid="divider" />}
           data-testid="stack-with-divider"
         >
           <div data-testid="child-1">Child 1</div>
@@ -84,7 +84,7 @@ describe("Stack", () => {
     expect(screen.getByTestId("child-1")).toBeInTheDocument();
     expect(screen.getByTestId("child-2")).toBeInTheDocument();
     expect(screen.getByTestId("child-3")).toBeInTheDocument();
-    
+
     // There should be 2 dividers (between 3 children)
     const dividers = screen.getAllByTestId("divider");
     expect(dividers).toHaveLength(2);
@@ -140,8 +140,8 @@ describe("Stack", () => {
 
     const { container } = render(
       <ThemeProvider theme={createTheme({})}>
-        <Stack 
-          sx={{ bgcolor: 'primary.main', p: 2 }} 
+        <Stack
+          sx={{ bgcolor: "primary.main", p: 2 }}
           data-testid="stack-with-sx"
         />
       </ThemeProvider>,
@@ -151,8 +151,8 @@ describe("Stack", () => {
 
     // Check sx props applied correctly
     expect(stackElement).toHaveStyle({
-      backgroundColor: 'rgb(25, 118, 210)', // primary.main color
-      padding: '16px', // p: 2 = 16px
+      backgroundColor: "rgb(25, 118, 210)", // primary.main color
+      padding: "16px", // p: 2 = 16px
     });
   });
 
@@ -183,7 +183,7 @@ describe("Stack", () => {
 
     const items = screen.getAllByTestId(/item-/);
     expect(items).toHaveLength(2);
-    
+
     // Stack should only contain the two items without any dividers
     const stack = screen.getByTestId("stack-no-divider");
     expect(stack.childNodes).toHaveLength(2);
@@ -194,7 +194,7 @@ describe("Stack", () => {
 
     const { container } = render(
       <ThemeProvider theme={createTheme({})}>
-        <Stack 
+        <Stack
           divider={<div data-testid="divider" />}
           data-testid="stack-with-falsy"
         >
@@ -210,7 +210,7 @@ describe("Stack", () => {
     // Only two real items should be rendered
     const items = screen.getAllByTestId(/item-/);
     expect(items).toHaveLength(2);
-    
+
     // And only one divider (between the two items)
     const dividers = screen.getAllByTestId("divider");
     expect(dividers).toHaveLength(1);
